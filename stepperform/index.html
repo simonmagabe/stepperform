@@ -30,7 +30,7 @@
         <form action="" method="post">
             <div class="email">
                 <label for="email">Email</label>
-                <input type="email" name="email" required placeholder="Enter email">
+                <input type="email" name="email" required placeholder="Enter email" onkeyup = "handleButtonActive(this)">
             </div>
 
             <div class="password">
@@ -40,8 +40,10 @@
 
             <div class="submission">
                 <button class="previous-button" type="button">Previous</button>
-                <button class="email-next-button" type="button">Next</button>
+                <button class="email-next-button disable" type="button" disabled>Next</button>
+                <button class="password-previous-button" type="button">Previous</button>
                 <button class="password-next-button" type="button">Next</button>
+                <button class="validate-previous-button" type="button">Previous</button>
                 <button class="submit-button" type="submit" value="Submit" >Submit</button>
             </div>
         </form>

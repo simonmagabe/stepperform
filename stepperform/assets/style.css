@@ -80,8 +80,12 @@ form .password {
 }
 
 .submission {
-	margin-bottom: 10px;
+	margin-bottom: 30px;
 	display: flex;
+}
+
+.submission.center {
+	justify-content: center;
 }
 
 .submission button {
@@ -103,7 +107,20 @@ form .password {
 	display: none;
 }
 
+.disable {
+	opacity: 0.5;
+	cursor: auto;
+}
+
+.submission button.password-previous-button {
+	display: none;
+}
+
 .submission button.password-next-button {
+	display: none;
+}
+
+.submission button.validate-previous-button {
 	display: none;
 }
 
