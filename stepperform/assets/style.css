@@ -38,6 +38,10 @@ body {
 	align-items: center;
 }
 
+.step:hover {
+	background: #ccc;
+}
+
 .step span {
 	background: #ccc;
 	padding: 10px;
@@ -89,6 +93,7 @@ form .password {
 }
 
 .submission button {
+	display: flex;
 	padding: 10px 20px;
 	font-weight: bold;
 	background: #1e90ff;
@@ -97,6 +102,45 @@ form .password {
 	border-radius: 4px;
 	margin-right: 5px;
 	cursor: pointer;
+	width: 100px;
+	align-items: center;
+	justify-content: center;
+}
+
+.email-next-button span,
+.password-next-button span,
+.submit-button span {
+	margin-left: 6px;
+}
+
+.previous-button span,
+.password-previous-button span {
+	margin-left: 5px;
+}
+
+button:hover {
+	opacity: 0.9;
+}
+
+.email-next-button:hover i,
+.password-next-button:hover i,
+.submit-button:hover i {
+	margin-left: 6px;
+}
+
+.email-next-button:hover span,
+.password-next-button:hover span,
+.submit-button:hover span {
+	margin-left: 5px;
+}
+
+.previous-button:hover i,
+.password-previous-button:hover i {
+	margin-right: 6px;
+}
+
+.previous-button:hover span {
+	margin-left: 4px;
 }
 
 .submission button.previous-button {
@@ -107,7 +151,7 @@ form .password {
 	display: none;
 }
 
-.disable {
+.submission button.email-next-button.disable {
 	opacity: 0.5;
 	cursor: auto;
 }
@@ -118,6 +162,11 @@ form .password {
 
 .submission button.password-next-button {
 	display: none;
+}
+
+.submission button.password-next-button.disable {
+	opacity: 0.5;
+	cursor: auto;
 }
 
 .submission button.validate-previous-button {

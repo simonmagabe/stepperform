@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stepper Form</title>
     <link rel="stylesheet" href="./assets/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
 </head>
 <body>
     <div class="container">
@@ -27,7 +28,7 @@
             </div>
         </div>
 
-        <form action="" method="post">
+        <form action="/index.html" method="get" id="Stepperform">
             <div class="email">
                 <label for="email">Email</label>
                 <input type="email" name="email" required placeholder="Enter email" onkeyup = "handleButtonActive(this)">
@@ -35,16 +36,32 @@
 
             <div class="password">
                 <label for="password">Password</label>
-                <input type="password" name="password" required placeholder="Enter password" minlength="6" maxlength="18">
+                <input type="password" name="password" required placeholder="Enter password" minlength="6" maxlength="18" onkeyup = "handlePassword(this)">
             </div>
 
             <div class="submission">
-                <button class="previous-button" type="button">Previous</button>
-                <button class="email-next-button disable" type="button" disabled>Next</button>
-                <button class="password-previous-button" type="button">Previous</button>
-                <button class="password-next-button" type="button">Next</button>
-                <button class="validate-previous-button" type="button">Previous</button>
-                <button class="submit-button" type="submit" value="Submit" >Submit</button>
+                <button class="previous-button" type="button">
+                    <span><i class="fas fa-chevron-left"></i></span>
+                    Previous
+                </button>
+                <button class="email-next-button disable" type="button" disabled>
+                    <span>
+                        Next
+                    </span>
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <button class="password-previous-button" type="button">
+                    <span><i class="fas fa-chevron-left"></i></span>
+                    Previous
+                </button>
+                <button class="password-next-button disable" type="button" disabled>
+                    Next
+                    <span><i class="fas fa-chevron-right"></i></span>
+                </button>
+                <button class="submit-button" type="submit" form="Stepperform" value="Submit" href="#">
+                    Submit
+                    <span><i class="fas fa-chevron-right"></i></span>
+                </button>
             </div>
         </form>
     </div>

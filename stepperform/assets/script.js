@@ -32,7 +32,6 @@ addEventListener('load', () => {
 		emailNextButton.style.display = 'flex';
 		emailComponent.style.background = '#CCC';
 		emailStepOrder.style.background = '#1e90ff';
-
 		passwordForm.style.display = 'none';
 	}
 });
@@ -42,16 +41,9 @@ emailNextButton.addEventListener('click', () => {
 	nextStep = stepTwoStatus;
 
 	if (currentStep === 'Email Address' && nextStep === 'Password') {
-		emailForm.style.display = 'none';
-		passwordForm.style.display = 'flex';
+		emailStyling('none', 'none', '#fff', '#ccc', 'flex');
 
-		emailNextButton.style.display = 'none';
-		previousButton.style.display = 'flex';
-		passwordNextButton.style.display = 'flex';
-		emailComponent.style.background = '#fff';
-		emailStepOrder.style.background = '#ccc';
-		passwordComponent.style.background = '#ccc';
-		passwordStepOrder.style.background = '#1E90FF';
+		passwordStyling('flex', 'flex', '#ccc', '#1e90ff', 'none');
 	}
 });
 
@@ -61,19 +53,9 @@ previousButton.addEventListener('click', () => {
 	nextStep = stepThreeStatus;
 
 	if (previousStep === 'Email Address' && currentStep === 'Password' && nextStep === 'Validate') {
-		emailForm.style.display = 'flex';
-		passwordForm.style.display = 'none';
+		emailStyling('flex', 'flex', '#ccc', '#1E90FF', 'none');
 
-		passwordComponent.style.background = '#fff';
-		passwordStepOrder.style.background = '#ccc';
-
-		emailComponent.style.background = '#ccc';
-		emailStepOrder.style.background = '#1E90FF';
-
-		previousButton.style.display = 'none';
-		passwordNextButton.style.display = 'none';
-
-		emailNextButton.style.display = 'flex';
+		passwordStyling('none', 'none', '#fff', '#ccc', 'none');
 	}
 });
 
@@ -85,18 +67,12 @@ passwordNextButton.addEventListener('click', () => {
 	if (currentStep === 'Password') {
 		if (previousStep === 'Email Address' && nextStep === stepThreeStatus) {
 			emailForm.style.display = 'none';
-			passwordForm.style.display = 'none';
-
-			passwordComponent.style.background = '#FFF';
-			passwordStepOrder.style.background = '#CCC';
-			validateComponent.style.background = '#ccc';
-			validateStepOrder.style.background = '#1E90FF';
-
 			previousButton.style.display = 'none';
-			passwordNextButton.style.display = 'none';
-			passwordPreviousButton.style.display = 'flex';
+
+			passwordStyling('none', 'none', '#fff', '#ccc', 'flex');
+
+			validateStyling('#ccc', '#1e90ff', 'flex');
 			submissionButtons.classList.add('center');
-			submitButton.style.display = 'flex';
 		}
 	}
 });
@@ -107,30 +83,59 @@ passwordPreviousButton.addEventListener('click', () => {
 
 	if (currentStep === 'Validate' && previousStep === 'Password') {
 		emailForm.style.display = 'none';
-		passwordForm.style.display = 'flex';
-
-		validateComponent.style.background = '#fff';
-		validateStepOrder.style.background = '#ccc';
-
-		passwordComponent.style.background = '#ccc';
-		passwordStepOrder.style.background = '#1E90FF';
-
 		previousButton.style.display = 'flex';
-		passwordNextButton.style.display = 'flex';
 
-		passwordPreviousButton.style.display = 'none';
-		submitButton.style.display = 'none';
+		passwordStyling('flex', 'flex', '#CCC', '#1E90FF', 'none');
+
+		validateStyling('#fff', '#ccc', 'none');
 		submissionButtons.classList.remove('center');
 	}
 });
 
-function handleButtonActive(text) {
-	if (text.value != '') {
-		emailNextButton.disabled = false;
-		emailNextButton.classList.remove('disable');
+const handleButtonActive = (text) => {
+	if (text.value != '' && text.value.indexOf(' ') <= 0) {
+		if (text.value.indexOf('@') !== -1 && text.value.indexOf('.') !== -1) {
+			emailNextButton.disabled = false;
+			emailNextButton.classList.remove('disable');
+		}
 	}
 	else {
 		emailNextButton.classList.add('disable');
 		emailNextButton.disabled = true;
 	}
-}
+};
+
+const handlePassword = (text) => {
+	if (text.value !== '') {
+		if (text.value.length < 6) {
+			passwordNextButton.classList.add('disable');
+			passwordNextButton.disabled = true;
+		}
+		else {
+			passwordNextButton.classList.remove('disable');
+			passwordNextButton.disabled = false;
+		}
+	}
+};
+
+const emailStyling = (formDisplay, nextBtnDisplay, compBackColor, stepOrderBackClr, prevBtnDisplay) => {
+	emailForm.style.display = formDisplay;
+	emailNextButton.style.display = nextBtnDisplay;
+	emailComponent.style.background = compBackColor;
+	emailStepOrder.style.background = stepOrderBackClr;
+	previousButton.style.display = prevBtnDisplay;
+};
+
+const passwordStyling = (formDisplay, nextBtnDisplay, compBackColor, stepOrderBackClr, prevBtnDisplay) => {
+	passwordForm.style.display = formDisplay;
+	passwordNextButton.style.display = nextBtnDisplay;
+	passwordComponent.style.background = compBackColor;
+	passwordStepOrder.style.background = stepOrderBackClr;
+	passwordPreviousButton.style.display = prevBtnDisplay;
+};
+
+const validateStyling = (compBackColor, stepOrderBackClr, submitBtnDisplay) => {
+	validateComponent.style.background = compBackColor;
+	validateStepOrder.style.background = stepOrderBackClr;
+	submitButton.style.display = submitBtnDisplay;
+};
