@@ -14,6 +14,8 @@ const validateStepOrder = document.querySelector('.validate-span');
 const emailForm = document.querySelector('form .email');
 const passwordForm = document.querySelector('form .password');
 
+let passwordValue = document.querySelector('form .password span');
+
 let currentStep;
 let previousStep;
 let nextStep;
@@ -106,14 +108,18 @@ const handleButtonActive = (text) => {
 };
 
 const handlePassword = (text) => {
+	passwordValue.textContent = `${text.value.length} charaters entered.`;
 	if (text.value !== '') {
 		if (text.value.length < 6) {
 			passwordNextButton.classList.add('disable');
 			passwordNextButton.disabled = true;
+			passwordValue.style.color = '#159430a2';
 		}
 		else {
 			passwordNextButton.classList.remove('disable');
 			passwordNextButton.disabled = false;
+			passwordValue.textContent = `${18 - text.value.length} charaters left.`;
+			passwordValue.style.color = '#b3321be1';
 		}
 	}
 };

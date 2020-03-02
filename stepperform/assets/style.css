@@ -75,6 +75,11 @@ form .password {
 	margin-bottom: 20px;
 }
 
+form .password span {
+	color: #159430a2;
+	font-size: 14px;
+}
+
 .email input,
 .password input {
 	width: 100%;
