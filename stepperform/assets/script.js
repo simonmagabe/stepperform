@@ -15,6 +15,7 @@ const emailForm = document.querySelector('form .email');
 const passwordForm = document.querySelector('form .password');
 
 let passwordValue = document.querySelector('form .password span');
+let emailValue = document.querySelector('form .email span');
 
 let currentStep;
 let previousStep;
@@ -95,10 +96,12 @@ passwordPreviousButton.addEventListener('click', () => {
 });
 
 const handleButtonActive = (text) => {
+	emailValue.textContent = 'Format: test@mail.com';
 	if (text.value != '' && text.value.indexOf(' ') <= 0) {
 		if (text.value.indexOf('@') !== -1 && text.value.indexOf('.') !== -1) {
 			emailNextButton.disabled = false;
 			emailNextButton.classList.remove('disable');
+			emailValue.textContent = '';
 		}
 	}
 	else {
