@@ -116,13 +116,13 @@ const handlePassword = (text) => {
 		if (text.value.length < 6) {
 			passwordNextButton.classList.add('disable');
 			passwordNextButton.disabled = true;
-			passwordValue.style.color = '#159430a2';
+			passwordValue.style.color = '#b3321be1';
 		}
 		else {
 			passwordNextButton.classList.remove('disable');
 			passwordNextButton.disabled = false;
 			passwordValue.textContent = `${18 - text.value.length} charaters left.`;
-			passwordValue.style.color = '#b3321be1';
+			passwordValue.style.color = '#159430a2';
 		}
 	}
 };
