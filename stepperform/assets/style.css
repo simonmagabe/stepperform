@@ -49,10 +49,6 @@ body {
 	margin-right: 10px;
 }
 
-.stepper:hover .step {
-	background-color: #eb5a5a;
-}
-
 hr {
 	width: 30%;
 	border: none;
@@ -206,14 +202,6 @@ button:hover {
 	margin: 60px auto 120px;
 	color: #ffffff;
 	line-height: 1.8;
-}
-
-#close {
-	cursor: pointer;
-	margin: 20px 0 5px;
-	padding: 5px 10px;
-	border: none;
-	border-radius: 2px;
 }
 
 @media (max-width: 1500px) {

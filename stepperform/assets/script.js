@@ -53,12 +53,6 @@ addEventListener('load', () => {
 });
 
 emailNextButton.addEventListener('click', () => {
-	console.log(`-------------`);
-	console.log(`Current step: ${currentStep}`);
-	console.log(`Next step: ${nextStep}`);
-	console.log(`Previous step: ${previousStep}`);
-	console.log(`-------------`);
-
 	currentStep = stepOneStatus;
 	nextStep = stepTwoStatus;
 	previousStep = '';
@@ -75,12 +69,6 @@ emailNextButton.addEventListener('click', () => {
 });
 
 previousButton.addEventListener('click', () => {
-	console.log(`-------------`);
-	console.log(`Current step: ${currentStep}`);
-	console.log(`Next step: ${nextStep}`);
-	console.log(`Previous step: ${previousStep}`);
-	console.log(`-------------`);
-
 	previousStep = stepOneStatus;
 	currentStep = stepTwoStatus;
 	nextStep = stepThreeStatus;
@@ -132,10 +120,6 @@ passwordPreviousButton.addEventListener('click', () => {
 });
 
 form.onsubmit = submitForm;
-
-closeMessageButton.addEventListener('click', () => {
-	location.reload(true);
-});
 
 const handleButtonActive = (text) => {
 	emailValue.textContent = 'Format: test@mail.com';
