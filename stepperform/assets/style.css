@@ -38,10 +38,6 @@ body {
 	align-items: center;
 }
 
-.step:hover {
-	background: #ccc;
-}
-
 .step span {
 	background: #ccc;
 	padding: 10px;
@@ -50,14 +46,15 @@ body {
 	display: flex;
 	align-items: center;
 	border: none;
-}
-
-span {
 	margin-right: 10px;
 }
 
+.stepper:hover .step {
+	background-color: #eb5a5a;
+}
+
 hr {
-	width: 25%;
+	width: 30%;
 	border: none;
 	border-bottom: solid rgb(96, 149, 199) 1px;
 }
@@ -91,6 +88,10 @@ form .password span {
 	padding: 15px 20px;
 	border: 1px solid #ccc;
 	border-radius: 4px;
+}
+
+form label i {
+	color: #eb5a5a;
 }
 
 .submission {
@@ -187,13 +188,53 @@ button:hover {
 	display: none;
 }
 
-@media (max-width: 1200px) {
+.error {
+	font-size: 14px;
+	color: #eb5a5a;
+}
+
+.submitMessage {
+	display: flex;
+	justify-content: center;
+}
+
+.success {
+	border: none;
+	padding: 10px;
+	border-radius: 4px;
+	background: #03b973f6;
+	margin: 60px auto 120px;
+	color: #ffffff;
+	line-height: 1.8;
+}
+
+#close {
+	cursor: pointer;
+	margin: 20px 0 5px;
+	padding: 5px 10px;
+	border: none;
+	border-radius: 2px;
+}
+
+@media (max-width: 1500px) {
+	hr {
+		width: 25%;
+	}
+}
+
+@media (max-width: 1100px) {
+	hr {
+		width: 20%;
+	}
+}
+
+@media (max-width: 900px) {
 	hr {
 		width: 15%;
 	}
 }
 
-@media (max-width: 900px) {
+@media (max-width: 800px) {
 	hr {
 		width: 10%;
 	}

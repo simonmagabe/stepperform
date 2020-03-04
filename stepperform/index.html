@@ -10,62 +10,79 @@
 <body>
     <div class="container">
         <h2 class="title">Linear Stepper Form</h2>
+        <header id="header">
+            <div class="steps" hidden>
+                <div class="stepper">
+                    <div class="step email">
+                    <span class="email-span">1</span>
+                    <p class="email-text">Email Address</p>
+                </div>
+                </div>
+                <hr>
+                <div class="stepper">
+                    <div class="step password">
+                    <span class="password-span">2</span>
+                    <p class="password-text">Password</p>
+                </div>
+                </div>
+                <hr>
+                <div class="stepper">
+                    <div class="step validate" >
+                    <span class="validate-span">3</span>
+                    <p class="validate-text">Validate</p>
+                </div>
+                </div>
+            </div>
+        </header>
 
-        <div class="steps">
-            <div class="step email">
-                <span class="email-span">1</span>
-                <p class="email-text">Email Address</p>
-            </div>
-            <hr>
-            <div class="step password">
-                <span class="password-span">2</span>
-                <p class="password-text">Password</p>
-            </div>
-            <hr>
-            <div class="step validate">
-                <span class="validate-span">3</span>
-                <p class="validate-text">Validate</p>
-            </div>
-        </div>
+        <form action="" method="get" id="stepperForm">
+            <div class="form">
+                <p class="error" hidden>Please fill out all required fields.</p>
+                <div class="email">
+                    <label for="email">Email <i class="fas fa-asterisk fa-xs"></i></label>
+                    <input id="email" type="email" name="email" required placeholder="Enter email" onkeyup = "handleButtonActive(this)" value="">
+                    <span></span>
+                </div>
 
-        <form action="/index.html" method="get" id="Stepperform">
-            <div class="email">
-                <label for="email">Email</label>
-                <input type="email" name="email" required placeholder="Enter email" onkeyup = "handleButtonActive(this)" value="">
-                <span></span>
-            </div>
+                <div class="password">
+                    <label for="password">Password <i class="fas fa-asterisk fa-xs"></i></label>
+                    <input id="password" type="password" name="password" required placeholder="Enter password." minlength="8" maxlength="18" onkeyup = "handlePassword(this)">
+                    <span>Enter between 8 -18 characters.</span>
+                </div>
 
-            <div class="password">
-                <label for="password">Password</label>
-                <input type="password" name="password" required placeholder="Enter password. 6 characters or more." minlength="6" maxlength="18" onkeyup = "handlePassword(this)">
-                <span>Enter between 6 -18 characters.</span>
-            </div>
-
-            <div class="submission">
-                <button class="previous-button" type="button">
-                    <span><i class="fas fa-chevron-left"></i></span>
-                    Previous
-                </button>
-                <button class="email-next-button disable" type="button" disabled>
-                    <span>
+                <div class="submission">
+                    <button class="previous-button" type="button">
+                        <span><i class="fas fa-chevron-left"></i></span>
+                        Previous
+                    </button>
+                    <button class="email-next-button disable" type="button" disabled>
+                        <span>
+                            Next
+                        </span>
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <button class="password-previous-button" type="button">
+                        <span><i class="fas fa-chevron-left"></i></span>
+                        Previous
+                    </button>
+                    <button class="password-next-button disable" type="button" disabled>
                         Next
-                    </span>
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-                <button class="password-previous-button" type="button">
-                    <span><i class="fas fa-chevron-left"></i></span>
-                    Previous
-                </button>
-                <button class="password-next-button disable" type="button" disabled>
-                    Next
-                    <span><i class="fas fa-chevron-right"></i></span>
-                </button>
-                <button class="submit-button" type="submit" form="Stepperform" value="Submit" href="#">
-                    Submit
-                    <span><i class="fas fa-chevron-right"></i></span>
-                </button>
+                        <span><i class="fas fa-chevron-right"></i></span>
+                    </button>
+                    <button class="submit-button" type="submit">
+                        Submit
+                        <span><i class="fas fa-chevron-right"></i></span>
+                    </button>
+                </div>
             </div>
         </form>
+        <div class="submitMessage">
+            <div class="success"  hidden>
+                <h3>Success!</h3>
+                <p>Thank You! Your form has been submitted.</p>
+                <button id="close">Close</button>
+            </div>
+        </div>
     </div>
 
     <script src="./assets/script.js"></script>

@@ -1,4 +1,6 @@
 /* constants */
+const header = document.querySelector('#header');
+
 const stepOneStatus = document.querySelector('.email-text').textContent;
 const stepTwoStatus = document.querySelector('.password-text').textContent;
 const stepThreeStatus = document.querySelector('.validate-text').textContent;
@@ -11,11 +13,19 @@ const emailStepOrder = document.querySelector('.email-span');
 const passwordStepOrder = document.querySelector('.password-span');
 const validateStepOrder = document.querySelector('.validate-span');
 
+const form = document.querySelector('#stepperForm');
+const formContent = document.querySelector('#stepperForm .form');
 const emailForm = document.querySelector('form .email');
 const passwordForm = document.querySelector('form .password');
 
-let passwordValue = document.querySelector('form .password span');
-let emailValue = document.querySelector('form .email span');
+const passwordValue = document.querySelector('form .password span');
+const emailValue = document.querySelector('form .email span');
+const emailInput = document.querySelector('#email');
+const passwordInput = document.querySelector('#password');
+const error = document.querySelector('.error');
+
+emailInput.oninvalid = invalidEmail;
+passwordInput.oninvalid = invalidPassword;
 
 let currentStep;
 let previousStep;
@@ -28,29 +38,49 @@ const passwordPreviousButton = document.querySelector('.submission button.passwo
 const passwordNextButton = document.querySelector('.submission button.password-next-button');
 const submitButton = document.querySelector('.submission button.submit-button');
 
+const successMessage = document.querySelector('.submitMessage .success');
+const closeMessageButton = document.querySelector('#close');
+
 addEventListener('load', () => {
 	currentStep = stepOneStatus;
 
 	if (currentStep === 'Email Address') {
 		emailNextButton.style.display = 'flex';
-		emailComponent.style.background = '#CCC';
-		emailStepOrder.style.background = '#1e90ff';
 		passwordForm.style.display = 'none';
+		emailComponent.style.background = '#ccc';
+		emailStepOrder.style.background = '#1e90ff';
 	}
 });
 
 emailNextButton.addEventListener('click', () => {
+	console.log(`-------------`);
+	console.log(`Current step: ${currentStep}`);
+	console.log(`Next step: ${nextStep}`);
+	console.log(`Previous step: ${previousStep}`);
+	console.log(`-------------`);
+
 	currentStep = stepOneStatus;
 	nextStep = stepTwoStatus;
+	previousStep = '';
 
 	if (currentStep === 'Email Address' && nextStep === 'Password') {
 		emailStyling('none', 'none', '#fff', '#ccc', 'flex');
 
 		passwordStyling('flex', 'flex', '#ccc', '#1e90ff', 'none');
+
+		error.setAttribute('hidden', '');
 	}
+
+	return currentStep && nextStep;
 });
 
 previousButton.addEventListener('click', () => {
+	console.log(`-------------`);
+	console.log(`Current step: ${currentStep}`);
+	console.log(`Next step: ${nextStep}`);
+	console.log(`Previous step: ${previousStep}`);
+	console.log(`-------------`);
+
 	previousStep = stepOneStatus;
 	currentStep = stepTwoStatus;
 	nextStep = stepThreeStatus;
@@ -60,13 +90,15 @@ previousButton.addEventListener('click', () => {
 
 		passwordStyling('none', 'none', '#fff', '#ccc', 'none');
 	}
+
+	return currentStep && nextStep && previousStep;
 });
 
 passwordNextButton.addEventListener('click', () => {
 	previousStep = stepOneStatus;
 	currentStep = stepTwoStatus;
 	nextStep = stepThreeStatus;
-
+	error.removeAttribute('hidden');
 	if (currentStep === 'Password') {
 		if (previousStep === 'Email Address' && nextStep === stepThreeStatus) {
 			emailForm.style.display = 'none';
@@ -76,8 +108,10 @@ passwordNextButton.addEventListener('click', () => {
 
 			validateStyling('#ccc', '#1e90ff', 'flex');
 			submissionButtons.classList.add('center');
+			error.setAttribute('hidden', '');
 		}
 	}
+	return currentStep && nextStep && previousStep;
 });
 
 passwordPreviousButton.addEventListener('click', () => {
@@ -93,6 +127,14 @@ passwordPreviousButton.addEventListener('click', () => {
 		validateStyling('#fff', '#ccc', 'none');
 		submissionButtons.classList.remove('center');
 	}
+
+	return currentStep && nextStep && previousStep;
+});
+
+form.onsubmit = submitForm;
+
+closeMessageButton.addEventListener('click', () => {
+	location.reload();
 });
 
 const handleButtonActive = (text) => {
@@ -126,6 +168,30 @@ const handlePassword = (text) => {
 		}
 	}
 };
+
+function invalidEmail(event) {
+	try {
+		error.removeAttribute('hidden');
+	} catch (error) {
+		console.error();
+	}
+}
+
+function invalidPassword(event) {
+	try {
+		error.removeAttribute('hidden');
+	} catch (error) {
+		console.error();
+	}
+}
+
+function submitForm(event) {
+	header.setAttribute('hidden', '');
+	formContent.setAttribute('hidden', '');
+	successMessage.removeAttribute('hidden');
+	// stopping the form from submitting
+	event.preventDefault();
+}
 
 const emailStyling = (formDisplay, nextBtnDisplay, compBackColor, stepOrderBackClr, prevBtnDisplay) => {
 	emailForm.style.display = formDisplay;
