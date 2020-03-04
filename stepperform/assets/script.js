@@ -134,7 +134,7 @@ passwordPreviousButton.addEventListener('click', () => {
 form.onsubmit = submitForm;
 
 closeMessageButton.addEventListener('click', () => {
-	location.reload();
+	location.reload(true);
 });
 
 const handleButtonActive = (text) => {
